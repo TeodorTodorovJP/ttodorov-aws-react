@@ -3,11 +3,11 @@ import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
 import { store } from "./app/store"
 import "./index.css"
-import { Amplify } from "aws-amplify"
-import amplifyconfig from "./amplifyconfiguration.json"
+//import { Amplify } from "aws-amplify"
+//mport amplifyconfig from "./amplifyconfiguration.json"
 import RouterWrap from "./RouterWrap"
 
-Amplify.configure(amplifyconfig)
+//Amplify.configure(amplifyconfig)
 
 const container = document.getElementById("root")
 
