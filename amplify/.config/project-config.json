@@ -2,11 +2,11 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "todos",
+  "projectName": "ttodorovawsreact",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {
-    "framework": "none",
+    "framework": "react",
     "config": {
       "SourceDir": "src",
       "DistributionDir": "dist",

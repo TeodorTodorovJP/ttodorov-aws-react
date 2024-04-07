@@ -1,0 +1,43 @@
+{
+  "api": {
+    "connectReact": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "connectFunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "connectFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_connectFunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "connectFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_connectFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "connectFunction"
+        }
+      ]
+    }
+  }
+}
