@@ -90,8 +90,8 @@ export default function App() {
   async function getTodo() {
     try {
       const restOperation = get({
-        apiName: "todos",
-        path: "/todos",
+        apiName: "connectReact",
+        path: "/connect",
       })
       const response = await restOperation.response
       console.log("GET call succeeded: ", response)

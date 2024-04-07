@@ -32,12 +32,19 @@ app.use(function(req, res, next) {
 
 app.get('/connect', function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  res.json({success: 'Connect succeeded!', url: req.url});
 });
 
-app.get('/connect/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+app.get('/todos', async function(req, res) {
+
+  try {
+    const url = 'https://zm0wi0hh08.execute-api.us-east-1.amazonaws.com/staging/todos'
+    const response = await fetch(url);
+    const data = await response.json();
+    res.json({success: 'Todos!', data: data});
+  } catch (e) {
+    res.json({error: 'Could not get todos!', message: JSON.parse(e.response.body)});
+  }
 });
 
 /****************************
