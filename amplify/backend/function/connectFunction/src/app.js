@@ -12,6 +12,7 @@ See the License for the specific language governing permissions and limitations 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+const axios = require('axios').default;
 
 // declare a new express app
 const app = express()
@@ -25,6 +26,16 @@ app.use(function(req, res, next) {
   next()
 });
 
+async function getDataFromSecondApp() {
+  try {
+    const url = 'https://zm0wi0hh08.execute-api.us-east-1.amazonaws.com/staging/todos'
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    // Handle errors appropriately
+  }
+}
 
 /**********************
  * Example get method *
@@ -38,10 +49,8 @@ app.get('/connect', function(req, res) {
 app.get('/todos', async function(req, res) {
 
   try {
-    const url = 'https://zm0wi0hh08.execute-api.us-east-1.amazonaws.com/staging/todos'
-    const response = await fetch(url);
-    const data = await response.json();
-    res.json({success: 'Todos!', data: data});
+    const response = await getDataFromSecondApp();
+    res.json({success: 'Todos!', data: response});
   } catch (e) {
     res.json({error: 'Could not get todos!', message: JSON.parse(e.response.body)});
   }

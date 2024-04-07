@@ -15,7 +15,7 @@
       "function": {
         "connectFunction": {
           "deploymentBucketName": "amplify-amplifyef4ca14a222e4-staging-66505-deployment",
-          "s3Key": "amplify-builds/connectFunction-39644b466a6573544e4c-build.zip"
+          "s3Key": "amplify-builds/connectFunction-4173355558714633542b-build.zip"
         }
       },
       "api": {
