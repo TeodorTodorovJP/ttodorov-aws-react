@@ -26,7 +26,7 @@ import Deposits from "./features/dashboard/Deposits"
 import Orders from "./features/dashboard/Orders"
 import { useEffect, useState } from "react"
 import { Outlet } from "react-router-dom"
-import { post } from "aws-amplify/api"
+import { get } from "aws-amplify/api"
 
 const drawerWidth: number = 240
 
@@ -87,30 +87,21 @@ export default function App() {
     setOpen(!open)
   }
 
-  async function postTodo() {
+  async function getTodo() {
     try {
-      const restOperation = post({
+      const restOperation = get({
         apiName: "todos",
         path: "/todos",
-        options: {
-          body: {
-            message: "Mow the lawn",
-          },
-        },
       })
-
-      const { body } = await restOperation.response
-      const response = await body.json()
-
-      console.log("POST call succeeded")
-      console.log(response)
+      const response = await restOperation.response
+      console.log("GET call succeeded: ", response)
     } catch (e: any) {
-      console.log("POST call failed: ", JSON.parse(e.response.body))
+      console.log("GET call failed: ", JSON.parse(e.response.body))
     }
   }
 
   useEffect(() => {
-    postTodo()
+    getTodo()
   }, [])
 
   return (
